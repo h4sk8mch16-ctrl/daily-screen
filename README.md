@@ -1,41 +1,43 @@
-# DAILY SCREEN — 自分用サイト（試作）
+# DAILY SCREEN — 自分用サイト
 
 DAILY SCREENの記事を蓄積・公開するための静的サイトです。ビルドツール不要の素のHTML/CSSだけで作られているので、GitHub Pagesに置くだけでそのまま動きます。
 
-## フォルダ構成
+公開先：リポジトリ `daily-screen`（https://github.com/h4sk8mch16-ctrl/daily-screen）
+公開URL：https://h4sk8mch16-ctrl.github.io/daily-screen/
+
+## 構成（日別ページ方式）
+
+毎朝の配信は、その日のニュースまとめと特集を1つの「号」ページにまとめて収録します。
 
 ```
 daily-screen-site/
-├── index.html                  トップページ（記事一覧カード）
+├── index.html                  トップページ（日別アーカイブ＋特集バックナンバー）
 ├── style.css                   全ページ共通スタイル
-├── articles/
-│   ├── illo.html               特集：illo（2026-11-17）
-│   └── goo-choki-par.html      特集・創刊号：GOO CHOKI PAR（2026-11-17）
-└── assets/                     記事で使う画像（相対パスで参照）
+├── issues/
+│   └── 2026-11-17.html         その日の「号」ページ（表紙→ニュース→特集）
+├── articles/                   特集単体のバックナンバー
+│   ├── illo.html               特集サンプル：illo（2026-11-17）
+│   └── goo-choki-par.html      特集・創刊号：GOO CHOKI PAR（2026-11-17号にも収録）
+└── assets/                     表紙・記事で使う画像（相対パスで参照）
 ```
 
-## GitHub Pagesで公開する手順
+### 号ページ（issues/YYYY-MM-DD.html）の中身の順序
 
-1. **リポジトリを作成する**
-   GitHubにログインし、右上の「＋」→「New repository」。リポジトリ名は例えば `daily-screen`。Publicにして「Create repository」。
+1. その日の表紙画像（冒頭に大きく表示）＋表紙のデザインのポイント
+2. 「ニュース」セクション：今日のハイライト＋各記事（見出し／出典／要約／元記事URLリンク）
+3. 「特集」セクション：特集の全文。順序は新構成ルールで、**ヘッダー画像 → タイトル → リード → 勉強ポイント → 本文（作品画像を該当箇所に組み込み、キャプション付き） → 出典**。「勉強ポイント」は締めではなくリード直下に置く。
 
-2. **ファイル一式をアップロードする**
-   - 方法A（ブラウザ）：リポジトリ画面で「uploading an existing file」を選び、このフォルダの中身（`index.html`、`style.css`、`articles/`、`assets/`、`README.md`）をドラッグ＆ドロップしてコミットする。フォルダごとドラッグすれば階層も保持されます。
-   - 方法B（gitコマンド）：このフォルダで `git init` → `git add .` → `git commit -m "init"` → リポジトリをリモートに設定して `git push`。
+## 毎朝の号ページ追加フロー
 
-3. **Pagesを有効にする**
-   リポジトリの **Settings → Pages** を開き、Build and deployment の Source を「Deploy from a branch」、Branch を `main` / `(root)` にして Save。1〜2分で公開されます。
+1. 前日の号ページ（`issues/` 内の最新ファイル）をコピーして `issues/YYYY-MM-DD.html` を作り、中身（表紙・ニュース・特集）を差し替える。
+2. その日の表紙画像と特集の作品画像は `assets/` に入れ、HTMLからは `../assets/ファイル名` の相対パスで参照する。
+3. `index.html` の「日別アーカイブ」に、新しい号のカードを先頭に追加する（表紙サムネイル・日付・ニュース見出し数本・特集タイトル）。
+4. 変更ファイル一式をGitHubへアップロード（コミット）すれば、数分でサイトへ反映される。配信チャットには、表紙画像と号ページのURLが届く運用。
 
-4. **公開URL**
-   `https://ユーザー名.github.io/リポジトリ名/`
-   （例：ユーザー名が `sekiya`、リポジトリ名が `daily-screen` なら `https://sekiya.github.io/daily-screen/`）
+## GitHub Pagesの公開設定（設定済み）
 
-## 毎日の記事追加の流れ
-
-1. 新しい記事を `articles/` に1ファイル追加する（既存記事のHTMLをコピーして中身を差し替えるのが早い）。
-2. 記事で使う画像は `assets/` に入れ、HTMLからは `../assets/ファイル名` の相対パスで参照する。
-3. `index.html` のカード一覧に、新記事へのカードを1つ追加する（サムネイル画像・タイトル・日付・コーナー名）。
-4. 変更をコミット／push（またはブラウザからアップロード）すれば、数分で自動的にサイトへ反映されます。
+- リポジトリの **Settings → Pages** で、Source「Deploy from a branch」、Branch `main` / `(root)` を選択済み。
+- 公開URLは `https://ユーザー名.github.io/リポジトリ名/` の形式（このサイトは https://h4sk8mch16-ctrl.github.io/daily-screen/ ）。
 
 ## デザインについて
 

@@ -121,9 +121,55 @@ article strong{color:var(--black)}
 }
 .site-footer b{color:var(--black)}
 
+/* ---------- index: issue card ---------- */
+.card-issue{grid-column:1/-1;flex-direction:row}
+.card-issue img.thumb{width:230px;aspect-ratio:auto;border-bottom:none;border-right:2px solid var(--line);object-fit:cover}
+.card-issue .headlines{margin:10px 0 0 1.1em;font-size:.86rem;color:#444;line-height:1.75}
+.card-issue .headlines li::marker{color:var(--shu)}
+.card-more{margin-top:12px;font-weight:900;font-size:.82rem;letter-spacing:.1em;color:var(--shu)}
+
+/* ---------- issue page ---------- */
+.issue-cover{margin:0 0 8px}
+.issue-cover img{max-width:460px;margin:0 auto;border:2px solid var(--line)}
+.issue-cover figcaption{text-align:center}
+.cover-points{
+  background:#fffdf7;border:1px solid #cfc5ab;border-left:6px solid var(--gold);
+  padding:16px 20px;margin:20px 0 8px;font-size:.86rem;
+}
+.cover-points h2{font-size:.9rem;font-weight:900;color:var(--black);margin-bottom:8px}
+.cover-points ul{margin-left:1.2em}
+.cover-points li{margin-bottom:.4em;line-height:1.7}
+article h2.section-title{
+  font-size:1.5rem;margin:48px 0 6px;border-bottom:3px solid var(--black);
+}
+.highlights{
+  background:var(--cream-2);border-left:6px solid var(--shu);
+  padding:18px 20px;margin:24px 0 8px;
+}
+.highlights h3{font-size:.95rem;font-weight:900;color:var(--black);margin-bottom:8px}
+.highlights ul{margin-left:1.2em}
+.highlights li{margin-bottom:.5em;font-size:.95rem;line-height:1.75}
+.highlights li:last-child{margin-bottom:0}
+.news-item{border-top:1px solid #cfc5ab;padding:20px 0 4px}
+.news-item h3{font-size:1.05rem;font-weight:900;line-height:1.6;color:var(--black)}
+.news-item h3 a{text-decoration:none}
+.news-item h3 a:hover{color:var(--shu);text-decoration:underline}
+.news-meta{font-size:.78rem;color:var(--muted);letter-spacing:.08em;margin:4px 0 8px}
+article h3{
+  font-size:1.12rem;font-weight:900;color:var(--black);line-height:1.55;margin:36px 0 12px;
+}
+.feature{margin-top:56px;border-top:3px solid var(--line);padding-top:36px}
+.feature .kicker{margin-bottom:20px}
+.feature-title{font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:900;line-height:1.4;color:var(--black)}
+article h2.feature-title{border-bottom:none;margin:18px 0 0;padding-bottom:0}
+article h2.feature-title::before{content:""}
+.feature-subtitle{font-size:clamp(1rem,3vw,1.25rem);font-weight:700;color:#333;margin:6px 0 4px}
+
 /* ---------- responsive ---------- */
 @media (max-width:720px){
   .cards{grid-template-columns:1fr}
+  .card-issue{flex-direction:column}
+  .card-issue img.thumb{width:100%;aspect-ratio:16/10;border-right:none;border-bottom:2px solid var(--line)}
   .site-header::before{width:110px;height:110px;top:-45px}
   .lead{padding:14px 16px}
   .study{padding:20px}
