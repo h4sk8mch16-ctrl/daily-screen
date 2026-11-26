@@ -102,6 +102,7 @@ article strong{color:var(--black)}
 .study ol{margin-left:1.3em}
 .study li{margin-bottom:.9em;font-size:.95rem}
 .study li:last-child{margin-bottom:0}
+.study strong{color:var(--gold)}
 .sources{margin:44px 0 8px;padding-top:16px;border-top:1px solid #cfc5ab;font-size:.82rem;color:#555}
 .sources h2{font-size:.95rem;border:none;margin:0 0 10px;padding:0}
 .sources h2::before{content:""}
